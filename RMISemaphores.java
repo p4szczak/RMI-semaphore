@@ -15,7 +15,7 @@ public class RMISemaphores extends UnicastRemoteObject implements IRMISemaphores
     }
 
     @Override
-    public boolean createSemaphore(int id, int maxState) throws RemoteException{
+    public synchronized boolean createSemaphore(int id, int maxState) throws RemoteException{
         RMISemaphore localsem = new RMISemaphore(id, maxState);
 
         for(int i = 0; i < this.semaphoreList.size(); i++){
